@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 21:48:53 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/18 20:12:25 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 18:15:35 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 void configuration(t_minirt *rt)
 {
@@ -43,7 +43,6 @@ void configuration(t_minirt *rt)
 void parsing_RT(char *file, t_minirt *rt)
 {
     int fd;
-    int i = 0;
     if ((fd = open(file, O_RDONLY)) < 0)
         {
             error(3);
@@ -59,5 +58,5 @@ void parsing_RT(char *file, t_minirt *rt)
         ft_stringdel(&rt->line);
 
     }
-    // close(fd);
+    close(fd);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 10:06:34 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/06 19:34:53 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:48:30 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

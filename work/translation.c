@@ -6,11 +6,22 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 13:17:13 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/16 14:28:44 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 17:10:41 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
+
+t_vector        translation(char *str_to_convert,t_vector add_in)
+{
+    t_vector result;
+    t_vector add_to;
+    
+    add_to = vectorSplit(str_to_convert);
+    result = vectorAdd(add_in,add_to);
+    return(result);
+}
+
 
 void        camera_translation(t_minirt *rt,int keycode)
 {

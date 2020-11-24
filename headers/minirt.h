@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 22:06:47 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/24 13:19:45 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 20:43:40 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_objects
     double      diameter;
     double      height;
     t_vector    cy_normal;
+    int         objects_index;
     int         wich_objects;
     
     struct s_objects   *next;
@@ -180,6 +181,8 @@ typedef struct s_minirt
     int             i;
     int             j;
     int             size;
+    int             index1;
+    int             indice;
 }t_minirt;
 
 
@@ -213,6 +216,7 @@ void            config_camera(t_minirt *rt, t_vector look_at);
 void            calcul_direction(t_minirt *rt, t_vector w, t_vector u, t_vector v);
 void            build_image(t_minirt *rt, t_vector look_at);
 void            create_window(t_minirt *rt, int WIDTH, int HEIGHT);
+
 /******************************************************************/
 
 /**************Parsing *****************************************/
@@ -227,6 +231,10 @@ void            plan_parsing(t_minirt *rt);
 void            triangle_parsing(t_minirt *rt);
 void            square_parsing(t_minirt *rt);
 void            cylindre_parsing(t_minirt *rt);
+t_camera        *camera_one(t_camera *camera,t_minirt *rt);
+t_plan          *paln_one(t_minirt *rt, t_plan *plan);
+t_sphere *sphere_one(t_minirt *rt,t_sphere *sphere);
+
 /******************************************************************/
 
 /*************Intersection  Objects ******************************/
@@ -271,18 +279,18 @@ void            calcul_data(t_minirt *rt);
 /***********************Linked_List  *******************************/
 t_color         wich_object_color(t_minirt *rt);
 void            add_list_back(t_list *(*head), t_list *last);
-t_objects       *copy_spher(t_vector center, double radius, t_color color);
+t_objects       *add_sphere_data(t_minirt *rt,t_vector center, double radius, t_color color);
 void            add_objects(t_objects  **objs, t_objects  *new_obj);
 double          counting_list(t_list *lst);
 int             ft_countObjects(t_list *lst);
-t_objects       *copy_plan(t_vector point,t_vector norm, t_color color);
-t_objects       *copy_triangle(t_vector point_a, t_vector point_b, t_vector point_c, t_color color);
-t_objects       *copy_square(t_vector center, t_vector normal, double side_size, t_color color);
-t_objects       *copy_cylindre(t_vector center, t_vector normal,double diameter,double height,t_color color);
+t_objects       *add_plan_data(t_minirt *rt,t_vector point,t_vector norm, t_color color);
+t_objects       *add_triangle_data(t_minirt *rt,t_vector point_a, t_vector point_b, t_vector point_c, t_color color);
+t_objects       *add_square_data(t_minirt *rt,t_vector center, t_vector normal, double side_size, t_color color);
+t_objects       *add_cylindre_data(t_minirt *rt,t_vector center, t_vector normal,double diameter,double height,t_color color);
 void            print_list(t_minirt *rt,t_objects *ip);
-t_list_lights   *copy_light(t_vector position, double ratio, t_color color_light);
+t_list_lights   *add_light_data(t_vector position, double ratio, t_color color_light);
 void            add_lights(t_list_lights **head, t_list_lights *new_obj);
-t_list_camera   *copy_camera(t_vector look_from,t_vector look_at,double fov);
+t_list_camera   *add_camera_data(t_vector look_from,t_vector look_at,double fov);
 void            add_camera(t_list_camera **head, t_list_camera *new_obj);
 int		        ft_lstsize(t_list_camera *lst);
 /**********************************************************************/
@@ -308,7 +316,6 @@ char           *ft_strdup(char *src);
 unsigned int    ft_strlen(const char *s);
 char            *ft_strjoin(char const *s1, char const *s2);
 int             digits_only(char *s);
-
 /***********************************************************************/
 
 /*************************Shadows***************************************/
@@ -339,6 +346,7 @@ t_vector    rotation_around_y(t_vector vector_to_rotate,double  tetha);
 t_vector    rotation_around_z(t_vector vector_to_rotate,double  tetha);
 t_vector    radian_in(t_vector rotation);
 t_vector    rotation(t_vector vector_to_rotate,t_vector rotation);
-
+t_vector        translation(char *str_to_convert,t_vector add_in);
+t_vector  rotation_1(char *str_to_convert,t_vector to_rotate);
 
 #endif // DEBUG

@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 10:07:48 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 13:47:14 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 20:39:44 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 void triangle_parsing(t_minirt *rt)
 {
@@ -37,7 +37,7 @@ void triangle_parsing(t_minirt *rt)
     triangle->point_a = vectorAdd(triangle->point_a,triangle->translation);
     triangle->point_b = vectorAdd(triangle->point_b, triangle->translation);
     triangle->point_c = vectorAdd(triangle->point_c, triangle->translation);
-    add_objects(&rt->list_obj, copy_triangle(triangle->point_a, triangle->point_b, triangle->point_c, triangle->color));
+    add_objects(&rt->list_obj, add_triangle_data(rt,triangle->point_a, triangle->point_b, triangle->point_c, triangle->color));
     free(triangle);
 }
 

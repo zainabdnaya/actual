@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 21:01:54 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/06 19:31:52 by zdnaya           ###   ########.fr       */
+/*   Created: 2019/10/20 23:05:34 by zdnaya            #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:30 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-unsigned int	ft_strlen(const char *s)
+char	*ft_strdup(char *src)
 {
-	int i;
+	char			*dup;
+	int				i;
 
 	i = 0;
-	while (s[i])
+	while (src[i])
+		i++;
+	dup = (char *)malloc(sizeof(char) * i + 1);
+	if (dup == NULL)
+		return (NULL);
+	i = 0;
+	while (src[i])
 	{
+		dup[i] = src[i];
 		i++;
 	}
-	return (i);
+	dup[i] = '\0';
+	return (dup);
 }

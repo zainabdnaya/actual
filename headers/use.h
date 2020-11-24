@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   use.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 21:40:20 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/14 07:28:44 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 17:23:54 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ typedef struct s_camera
     int         camera_count;
     double      tetha;
     int         point;
-
 } t_camera;
 
 

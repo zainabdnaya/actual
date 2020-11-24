@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 19:31:23 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 14:46:51 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:44:40 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 int ft_color(double ir, double ig, double ib)
 {

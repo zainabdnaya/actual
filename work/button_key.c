@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   button_key.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:33:12 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/24 13:33:01 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 17:24:13 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 int mlx_close(t_minirt *rt)
 {
@@ -42,9 +42,8 @@ void print_list_camera(t_list_camera *ip)
     }
     printf("\n");
 }
-int key_press(int keycode, t_minirt *rt)
+void     key_press1(int keycode, t_minirt *rt)
 {
-     (void)rt;
     static int i = 1;
     static int j = 0;
     static int size=0;
@@ -70,6 +69,12 @@ int key_press(int keycode, t_minirt *rt)
         mlx_put_image_to_window(rt->mlx.mlx_ptr, rt->mlx.win, rt->mlx.img_ptr, 0, 0);
         i++;
     }
+    
+}
+
+int key_press(int keycode, t_minirt *rt)
+{
+    key_press1(keycode,rt);
     if (keycode == 123 && rt->active_cam == 1 && rt->list_camera->previous!= NULL )
     {
              rt->list_camera = rt->list_camera->previous;

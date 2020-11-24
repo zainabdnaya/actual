@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 23:21:25 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/06 19:07:18 by zdnaya           ###   ########.fr       */
+/*   Created: 2019/10/18 21:01:54 by zdnaya            #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:31 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-void	*ft_calloc(size_t count, size_t size)
+unsigned int	ft_strlen(const char *s)
 {
-	int				i;
-	char			*ptr;
+	int i;
 
 	i = 0;
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-		return (NULL);
-	i = (size * count) - 1;
-	while (i >= 0)
+	while (s[i])
 	{
-		ptr[i] = '\0';
-		i--;
+		i++;
 	}
-	return (ptr);
+	return (i);
 }

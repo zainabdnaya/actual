@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 09:45:56 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/18 17:22:19 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:44:50 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 void bmp_file_header(t_minirt *rt, int *fd)
 {

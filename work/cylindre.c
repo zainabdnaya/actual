@@ -6,24 +6,21 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:23:59 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 18:46:59 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 20:39:51 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
-
-
-
+#include "../headers/minirt.h"
 
 void  cylindre_parsing(t_minirt *rt)
 {
     int count;
     t_cylindre *cylindre;
     if(!(cylindre = malloc(sizeof(t_cylindre))))
-            {
-                obj_error(23);
-                exit(1);
-            }
+    {
+        obj_error(23);
+        exit(1);
+    }
     count = ft_count(rt->pars.splitrest);
     if(count != 8)
     {
@@ -34,10 +31,10 @@ void  cylindre_parsing(t_minirt *rt)
     cylindre->center = vectorSplit(rt->pars.splitrest[1]);
     cylindre->cy_normal = vectorSplit(rt->pars.splitrest[2]);
     if ((cylindre->cy_normal.x > 1 || cylindre->cy_normal.x < -1) || (cylindre->cy_normal.y > 1 || cylindre->cy_normal.y < -1) || (cylindre->cy_normal.z > 1 || cylindre->cy_normal.z < -1))
-        {
-            obj_error(24);
-            exit(1);
-        }
+    {
+        obj_error(24);
+        exit(1);
+    }
     cylindre->color = colorSplit(rt->pars.splitrest[3]);
     cylindre->height = convert_to_double(rt->pars.splitrest[5]);
     cylindre->translation = vectorSplit(rt->pars.splitrest[6]);
@@ -45,12 +42,12 @@ void  cylindre_parsing(t_minirt *rt)
     cylindre->center = vectorAdd(cylindre->center,cylindre->translation);
     cylindre->diameter = convert_to_double(rt->pars.splitrest[4]);
     if(cylindre->diameter < 0 || cylindre->height < 0)
-        {
-            obj_error(29);
-            exit(1);   
-        }
+    {
+        obj_error(29);
+        exit(1);   
+    }
     cylindre->cy_normal = rotation(cylindre->cy_normal,cylindre->rotation);
-    add_objects(&rt->list_obj,copy_cylindre(cylindre->center,cylindre->cy_normal,cylindre->diameter, cylindre->height,cylindre->color));
+    add_objects(&rt->list_obj,add_cylindre_data(rt,cylindre->center,cylindre->cy_normal,cylindre->diameter, cylindre->height,cylindre->color));
     free(cylindre);
 }
 

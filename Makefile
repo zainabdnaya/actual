@@ -6,9 +6,10 @@
 #    By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/26 19:39:54 by zdnaya            #+#    #+#              #
-#    Updated: 2020/11/23 13:41:56 by zdnaya           ###   ########.fr        #
+#    Updated: 2020/11/24 16:47:05 by zdnaya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME			=  miniRT
 
@@ -44,26 +45,26 @@ SRCS			=  work/main.c\
 				   work/translation.c\
 				   work/rotation.c\
 				   work/button_key.c\
-				   tools/get_next_line.c\
-				   tools/get_next_line_utils.c\
-				   tools/ft_compare_end.c\
-				   tools/ft_charSplit.c\
-				   tools/ft_count.c\
-				   tools/ft_samestr.c\
-				   tools/ft_stringdel.c\
-				   tools/ft_free_split.c\
-				   tools/ft_calloc.c\
-				   tools/ft_charCount.c\
-				   tools/ft_lstsize.c\
-				   tools/ft_list.c\
-				   tools/add_list_back.c\
-				   tools/convert_to_double.c\
-				   tools/my_power.c\
-				   tools/ft_atoi.c\
-				   tools/ft_split.c\
-				   tools/ft_isdigit.c\
-				   tools/ft_strdup.c\
-				   tools/ft_strlen.c\
+				   work/tools/get_next_line.c\
+				   work/tools/get_next_line_utils.c\
+				   work/tools/ft_compare_end.c\
+				   work/tools/ft_charSplit.c\
+				   work/tools/ft_count.c\
+				   work/tools/ft_samestr.c\
+				   work/tools/ft_stringdel.c\
+				   work/tools/ft_free_split.c\
+				   work/tools/ft_calloc.c\
+				   work/tools/ft_charCount.c\
+				   work/tools/ft_lstsize.c\
+				   work/tools/ft_list.c\
+				   work/tools/add_list_back.c\
+				   work/tools/convert_to_double.c\
+				   work/tools/my_power.c\
+				   work/tools/ft_atoi.c\
+				   work/tools/ft_split.c\
+				   work/tools/ft_isdigit.c\
+				   work/tools/ft_strdup.c\
+				   work/tools/ft_strlen.c\
 
 				   
 OBJ = $(SRCS:.c=.o)

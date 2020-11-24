@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:52:31 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/03 22:36:47 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:49:10 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
 
 char	*ft_strjoin(char const *s1, char const *s2)

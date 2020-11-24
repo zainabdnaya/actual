@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stringdel.c                                     :+:      :+:    :+:   */
+/*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/03 09:10:03 by mac               #+#    #+#             */
-/*   Updated: 2020/10/03 20:38:10 by zdnaya           ###   ########.fr       */
+/*   Created: 2020/08/02 19:29:00 by zdnaya            #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:28 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-void	ft_stringdel(char **string)
+t_list *creat_new_node(void  *data)
 {
-	free(*string);
-	*string = NULL;
+  t_list *new;
+  
+   if(!( new = malloc(sizeof(t_list))))
+      return(NULL);
+  new->content = data;
+  new->next = NULL;
+  return(new);
+
 }

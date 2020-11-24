@@ -6,29 +6,19 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 00:17:23 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 13:46:59 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 20:39:39 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
-void        sphere_parsing(t_minirt *rt)
+t_sphere *sphere_one(t_minirt *rt,t_sphere *sphere)
 {
-    int count;
-    t_sphere    *sphere;
-
-    if(!(sphere =  malloc(sizeof(t_sphere))))
+     if(!(sphere =  malloc(sizeof(t_sphere))))
        {
            obj_error(23);
            exit(1);
-       } 
-    count = ft_count(rt->pars.splitrest);
-    if ( count != 5)
-    {
-            free(sphere);
-            obj_error(21);
-            exit(1);
-    }
+       }
     sphere->center = vectorSplit(rt->pars.splitrest[1]);
     sphere->radius = convert_to_double(rt->pars.splitrest[2]);
     if ( sphere->radius < 0 )
@@ -37,9 +27,30 @@ void        sphere_parsing(t_minirt *rt)
             exit(1);
         }
     sphere->color  = colorSplit(rt->pars.splitrest[3]);
-    sphere->translation = vectorSplit(rt->pars.splitrest[4]);
-    sphere->center = vectorAdd(sphere->center,sphere->translation);
-    add_objects(&rt->list_obj, copy_spher(sphere->center, sphere->radius, sphere->color));
+    return(sphere);
+}
+
+void        sphere_parsing(t_minirt *rt)
+{
+    int count;
+    t_sphere    *sphere;
+
+    if (ft_count(rt->pars.splitrest) == 4)
+        sphere = sphere_one(rt,sphere);
+    else if(ft_count(rt->pars.splitrest) == 5)
+    {
+           sphere = sphere_one(rt,sphere);
+          sphere->translation = vectorSplit(rt->pars.splitrest[4]);
+          sphere->center = vectorAdd(sphere->center,sphere->translation);
+    }
+    else 
+    {
+            free(sphere);
+            obj_error(21);
+            exit(1);
+    }
+  
+    add_objects(&rt->list_obj, add_sphere_data(rt,sphere->center, sphere->radius, sphere->color));
     free(sphere);
 }
 

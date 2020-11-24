@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_samestr.c                                       :+:      :+:    :+:   */
+/*   ft_stringdel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/02 08:50:05 by mac               #+#    #+#             */
-/*   Updated: 2020/10/03 19:51:14 by zdnaya           ###   ########.fr       */
+/*   Created: 2020/04/03 09:10:03 by mac               #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:30 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-int		ft_samestr(char *s1, char *s2)
+void	ft_stringdel(char **string)
 {
-	int		i;
-
-	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
-	if (!s1[i] && !s2[i])
-		return (1);
-	return (0);
+	free(*string);
+	*string = NULL;
 }

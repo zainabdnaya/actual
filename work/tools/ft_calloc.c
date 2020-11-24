@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_charCount.c                                     :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/05 07:31:50 by mac               #+#    #+#             */
-/*   Updated: 2020/10/03 20:43:33 by zdnaya           ###   ########.fr       */
+/*   Created: 2019/10/20 23:21:25 by zdnaya            #+#    #+#             */
+/*   Updated: 2020/11/24 16:49:27 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-int		ft_charCount(char *str, char c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int		i;
-	int		count;
+	int				i;
+	char			*ptr;
 
 	i = 0;
-	count = 0;
-	while (str[i])
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	i = (size * count) - 1;
+	while (i >= 0)
 	{
-		if (str[i] == c)
-			count++;
-		i++;
+		ptr[i] = '\0';
+		i--;
 	}
-	return (count);
+	return (ptr);
 }

@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 12:26:37 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/06 19:05:57 by zdnaya           ###   ########.fr       */
+/*   Created: 2019/10/18 21:38:30 by zdnaya            #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:27 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-void	ft_bzero(void *s, size_t n)
+int		ft_isdigit(int c)
 {
-	unsigned int		i;
-	char				*str;
-
-	i = 0;
-	str = s;
-	while (i < n)
-	{
-		str[i] = '\0';
-		i++;
-	}
+	if (c >= 48 && c <= 57)
+		return (1);
+	else
+		return (0);
 }

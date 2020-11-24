@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   phong.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:52:23 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 22:11:46 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 18:15:44 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 //note : Diffuse objects do not receive light from other objects. 
 //k_a \in [0,1] : constante liée à la composante ambiante, la proportion de lumière renvoyée ;
@@ -78,7 +78,6 @@ t_vector spec(t_minirt *rt)
     t_vector specular;
     t_vector reflection;
     t_vector view;
-
 
     dot = 2 * vectorDot(rt->n_norm, rt->l_norm);
     scal = vectorScale(rt->n_norm, dot);

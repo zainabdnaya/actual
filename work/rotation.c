@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 17:37:18 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/18 19:41:47 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:11:00 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 t_vector radian_in(t_vector rotation)
 {
@@ -67,4 +67,14 @@ t_vector    rotation(t_vector vector_to_rotate,t_vector rotation)
     vect = vector_to_rotate;
     vect = vectorNorme(vect);
     return(vect);
+}
+
+t_vector  rotation_1(char *str_to_convert,t_vector to_rotate)
+{
+    t_vector result;
+    t_vector rotation_angle;
+
+    rotation_angle =  vectorSplit(str_to_convert);
+    result =  rotation(to_rotate,rotation_angle);
+    return(result);
 }

@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 18:16:23 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 14:52:26 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 18:11:14 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 void add_objects(t_objects **head, t_objects *new_obj)
 {
@@ -26,9 +26,7 @@ void add_objects(t_objects **head, t_objects *new_obj)
         new->next = new_obj;
     }
     else
-    {
         *head = new_obj;
-    }
 }
 
 void add_lights(t_list_lights **head, t_list_lights *new_obj)
@@ -45,9 +43,7 @@ void add_lights(t_list_lights **head, t_list_lights *new_obj)
         new->next = new_obj;
     }
     else
-    {
         *head = new_obj;
-    }
 }
 
 void add_camera(t_list_camera **head, t_list_camera *new_cam)
@@ -73,35 +69,28 @@ void add_camera(t_list_camera **head, t_list_camera *new_cam)
         new->next = new_cam;
     }
     else
-    {
-        *head = new_cam;
-    }
-     
+        *head = new_cam;     
 }
-t_list_lights *copy_light(t_vector position, double ratio, t_color color_light)
+t_list_lights *add_light_data(t_vector position, double ratio, t_color color_light)
 {
     t_list_lights *light;
 
     light = malloc(sizeof(t_list_lights));
-
     light->position = position;
     light->ratio = ratio;
     light->rgb = color_light;
-
     light->next = NULL;
     return (light);
 }
 
-t_list_camera *copy_camera(t_vector look_from,t_vector look_at,double fov)
+t_list_camera *add_camera_data(t_vector look_from,t_vector look_at,double fov)
 {
     t_list_camera  *camera;
 
     camera = malloc(sizeof(t_list_camera));
-
     camera->look_from = look_from;
     camera->look_at = vectorNorme(look_at);
     camera->fov = fov;
-
     camera->next = NULL;
     return(camera);
 }

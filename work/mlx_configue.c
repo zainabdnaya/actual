@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:49:59 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 17:44:26 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 18:11:32 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 void        mlx_hook_configuration(t_minirt *rt)
 {
@@ -26,7 +26,6 @@ void                 create_window(t_minirt *rt, int WIDTH, int HEIGHT)
             error(0);
             exit(1);
         }
-
     if (!(rt->mlx.img_ptr = mlx_new_image(rt->mlx.mlx_ptr, WIDTH, HEIGHT)))
        {
            error(0);

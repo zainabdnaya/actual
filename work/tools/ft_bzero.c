@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count.c                                   :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/26 19:13:00 by mac               #+#    #+#             */
-/*   Updated: 2020/03/29 06:41:30 by mac              ###   ########.fr       */
+/*   Created: 2019/10/16 12:26:37 by zdnaya            #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:34 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-
-int		ft_count(char **str)
+void	ft_bzero(void *s, size_t n)
 {
-	int		i;
+	unsigned int		i;
+	char				*str;
 
 	i = 0;
-	while (str[i])
+	str = s;
+	while (i < n)
+	{
+		str[i] = '\0';
 		i++;
-	return (i);
+	}
 }

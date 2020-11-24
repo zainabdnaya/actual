@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 22:06:20 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 13:47:05 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 20:39:56 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 void square_parsing(t_minirt *rt) 
 {
@@ -47,7 +47,7 @@ void square_parsing(t_minirt *rt)
     square->rotation = vectorSplit(rt->pars.splitrest[6]);
     square->center = vectorAdd(square->center,square->translation);
     square->normal = rotation(square->normal,square->rotation);
-    add_objects(&rt->list_obj, copy_square(square->center, square->normal, square->side_size, square->color));
+    add_objects(&rt->list_obj, add_square_data(rt,square->center, square->normal, square->side_size, square->color));
     free(square);
 }
 

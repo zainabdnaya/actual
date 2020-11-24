@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 09:33:22 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 17:53:55 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:44:40 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 
 void config_window(t_minirt *rt, double fov)

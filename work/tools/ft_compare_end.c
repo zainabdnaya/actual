@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_compare_end.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 23:46:14 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/03 20:37:39 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:48:25 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
 int ft_compare_end(char *str, char *end)
 {

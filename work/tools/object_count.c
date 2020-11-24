@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_power.c                                         :+:      :+:    :+:   */
+/*   object_count.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/26 09:46:55 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/26 09:48:55 by zdnaya           ###   ########.fr       */
+/*   Created: 2020/10/19 21:11:27 by zdnaya            #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:32 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-double my_power(double number, int power)
-{
-    double result;
-    int count;
+// int objs_count(t_list *lst)
+// {
+//     int count;
+//     t_list *tmp;
 
-    count = 1;
-    result = 1;
-    if (power < 0)
-        return (0);
-    if (power == 0)
-        return (1);
-    while (count <= power)
-    {
-        result = result * number;
-        count++;
-    }
-    return (result);
-}
+
+//     tmp = lst;
+//     count = 0;
+//     while (tmp)
+//     {
+//         obj = tmp->content;
+//         tmp = tmp->next;
+//         if (!obj->nm)
+//             count++;
+//     }
+//     return (count);
+// }

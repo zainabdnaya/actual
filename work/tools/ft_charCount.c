@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   ft_charCount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/12 22:15:53 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/24 16:44:40 by zdnaya           ###   ########.fr       */
+/*   Created: 2020/04/05 07:31:50 by mac               #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:23 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/minirt.h"
+#include "../../headers/minirt.h"
 
-int resol_check(char *resolution)
+int		ft_charCount(char *str, char c)
 {
-    int i;
-    int result;
+	int		i;
+	int		count;
 
-    while (resolution[i] != '\0')
-    {
-        if (ft_isdigit(resolution[i]) == 1)
-            result = 1;
-        else
-        {
-            result = 0;
-            break;
-        }
-
-        i++;
-    }
-    return (result);
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
 }

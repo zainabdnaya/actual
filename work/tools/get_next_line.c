@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:51:16 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/24 10:56:28 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:47:58 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
 static char     *freez(char **buff)
 {

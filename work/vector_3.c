@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 21:35:49 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/18 18:17:34 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:44:40 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 t_vector vectorSplit(char *str)
 {

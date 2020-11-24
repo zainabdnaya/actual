@@ -6,21 +6,15 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 10:05:29 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 16:39:37 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 18:11:11 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 void resolution_parsing(t_minirt *rt)
 {
     int count;
-
-    // if (!(resol_check(rt->pars.splitrest[1])) || !(resol_check(rt->pars.splitrest[2])) )
-    //     {
-    //         error(0.1);
-    //         exit(1);
-    //     }
     count = ft_count(rt->pars.splitrest);
     if (count != 3)
        {
@@ -30,30 +24,18 @@ void resolution_parsing(t_minirt *rt)
     rt->resol.WIDTH = ft_atoi(rt->pars.splitrest[1]);
     rt->resol.HEIGHT = ft_atoi(rt->pars.splitrest[2]);
     if ((rt->resol.WIDTH < 1) || (  rt->resol.HEIGHT < 1))
-        {
-            error(7);
-            exit(1);
-        }
-    rt->resol.WIDTH > 2560 ? rt->resol.WIDTH = 2560 : 0;
-    rt->resol.HEIGHT > 1395 ? rt->resol.HEIGHT = 1395 : 0;
-    
+    {
+        error(7);
+        exit(1);
+    }
 }
 
-void camera_parsing(t_minirt *rt)
+t_camera    *camera_one(t_camera *camera,t_minirt *rt)
 {
-    t_camera *camera;
-    int result;
-
-    result = ft_count(rt->pars.splitrest);
     if (!(camera = malloc(sizeof(t_camera))))
-        {
-            p_error(13);
-            exit(1);
-        }
-    if (result != 6)
     {
         free(camera);
-        p_error(10);
+        p_error(13);
         exit(1);
     }
     camera->look_from = vectorSplit(rt->pars.splitrest[1]);
@@ -69,11 +51,30 @@ void camera_parsing(t_minirt *rt)
         error(7);
         exit(1);
     }
-    camera->translation = vectorSplit(rt->pars.splitrest[4]);
-    camera->rotation = vectorSplit(rt->pars.splitrest[5]);
-    camera->look_from = vectorAdd(camera->look_from,camera->translation);
-    camera->look_at = rotation(camera->look_at,camera->rotation);
-    add_camera(&rt->list_camera,copy_camera(camera->look_from,camera->look_at,camera->fov));
+    return(camera);
+}
+
+void camera_parsing(t_minirt *rt)
+{
+    t_camera *camera;
+    
+    if(ft_count(rt->pars.splitrest) == 4)
+    { 
+       camera = camera_one(camera,rt);
+    }
+    else if ( ft_count(rt->pars.splitrest) == 6 )
+    {  
+               camera = camera_one(camera,rt);
+    camera->look_from = translation(rt->pars.splitrest[4], camera->look_from);
+    camera->look_at = rotation_1(rt->pars.splitrest[5],camera->look_at);   
+    }
+    else
+     {
+        free(camera);
+        p_error(10);
+        exit(1);
+    }
+    add_camera(&rt->list_camera,add_camera_data(camera->look_from,camera->look_at,camera->fov));
     free(camera);
 }
 
@@ -119,6 +120,6 @@ void light_parsing(t_minirt *rt)
         }
     light->translation = vectorSplit(rt->pars.splitrest[4]);
     light->position = vectorAdd(light->position,light->translation);
-    add_lights(&rt->list_light,copy_light(light->position,light->ratio,light->rgb));
+    add_lights(&rt->list_light,add_light_data(light->position,light->ratio,light->rgb));
     free(light);
 }

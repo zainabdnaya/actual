@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 09:36:24 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/03 15:28:04 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:44:40 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 t_vector vectorCross(t_vector v1, t_vector v2)
 {

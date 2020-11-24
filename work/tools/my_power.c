@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   my_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/26 19:09:24 by mac               #+#    #+#             */
-/*   Updated: 2020/11/21 13:06:27 by zdnaya           ###   ########.fr       */
+/*   Created: 2020/10/26 09:46:55 by zdnaya            #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:32 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-int		ft_lstsize(t_list_camera *lst)
+double my_power(double number, int power)
 {
-	int		count;
-	t_list_camera	*tmp;
+    double result;
+    int count;
 
-	tmp = lst;
-	count = 0;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		count++;
-	}
-	return (count);
+    count = 1;
+    result = 1;
+    if (power < 0)
+        return (0);
+    if (power == 0)
+        return (1);
+    while (count <= power)
+    {
+        result = result * number;
+        count++;
+    }
+    return (result);
 }

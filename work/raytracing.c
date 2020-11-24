@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 13:45:19 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 20:14:44 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 20:44:54 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 
 int         list_size(t_objects *list)
@@ -26,35 +26,34 @@ int         list_size(t_objects *list)
     return(count);
     
 }
+
 void      calcul_data(t_minirt *rt)
 {
-            if(rt->check == 1)
-                calcul_sphere(rt);
-         if (rt->check == 2) 
-                calcul_plan(rt);
-         if (rt->check == 3)
-                calcul_triangle(rt);
-          if (rt->check == 4)
-                calcul_square(rt);            
-         if (rt->check== 5)
-                calcul_cylindre(rt);
-        else
-            return;
+    if(rt->check == 1)
+           calcul_sphere(rt);
+    if (rt->check == 2) 
+           calcul_plan(rt);
+    if (rt->check == 3)
+           calcul_triangle(rt);
+     if (rt->check == 4)
+           calcul_square(rt);            
+    if (rt->check== 5)
+            calcul_cylindre(rt);
+    else
+        return;
 }
 
- 
 void  object_coloration(t_minirt *rt)
 {
     t_list_lights *lgt;
+    
     lgt = NULL;
     rt->Id.x = 0;
     rt->Id.y = 0;
     rt->Id.z = 0;
-
     rt->Spec.x = 0;
     rt->Spec.y = 0;
     rt->Spec.z = 0;
-
     lgt = rt->list_light;
     while(rt->list_light != NULL)
         {
@@ -87,9 +86,9 @@ void        objects_intersection(t_minirt *rt,t_vector ray_direction,t_vector lo
 }
 void        wich_object(t_minirt *rt,double *cmp)
 {
-    rt->exist = 0;
-    t_color test = {255,255,255};
     t_objects *tmp;
+    
+    rt->exist = 0;
     tmp = NULL;
     tmp = rt->list_obj;
     while( rt->list_obj != NULL)
@@ -100,6 +99,7 @@ void        wich_object(t_minirt *rt,double *cmp)
             *cmp = rt->var;
             rt->list_obj->solution = *cmp;
             rt->check = rt->list_obj->wich_objects;
+            rt->indice = rt->list_obj->objects_index;
             calcul_data(rt);
             object_coloration(rt);
             rt->exist = 1;
@@ -107,12 +107,10 @@ void        wich_object(t_minirt *rt,double *cmp)
         rt->list_obj  = rt->list_obj->next;
     }
     rt->list_obj =  tmp;
-
  }
 
 t_color ray_Tracing(t_minirt *rt)
 {
-    int i;
     double    cmp = INT_MAX; 
     t_color black = {0, 0, 0};
     t_color result1;
@@ -121,16 +119,16 @@ t_color ray_Tracing(t_minirt *rt)
     wich_object(rt,&cmp);
     if (rt->exist == 1)
      {  
-             wich_shadow(rt);
-             if(rt->percent_shadow > 1)
-                rt->percent_shadow = 1;
-            rt->percent_shadow = 1-rt->percent_shadow;
-            result1.g = 255  * (ambiant(rt).y + rt->percent_shadow *(rt->Id.y  + rt->Spec.y ));
-            result1.r = 255  * (ambiant(rt).x + rt->percent_shadow *( rt->Id.x + rt->Spec.x));
-            result1.b = 255  * (ambiant(rt).z + rt->percent_shadow *(rt->Id.z  + rt->Spec.z ));
-            result1.r = min(255, max(0, result1.r));
-            result1.g = min(255, max(0, result1.g));
-            result1.b = min(255, max(0, result1.b));
+         wich_shadow(rt);
+         if(rt->percent_shadow > 1)
+            rt->percent_shadow = 1;
+        rt->percent_shadow = 1-rt->percent_shadow;
+        result1.g = 255  * (ambiant(rt).y + rt->percent_shadow *(rt->Id.y  + rt->Spec.y ));
+        result1.r = 255  * (ambiant(rt).x + rt->percent_shadow *( rt->Id.x + rt->Spec.x));
+        result1.b = 255  * (ambiant(rt).z + rt->percent_shadow *(rt->Id.z  + rt->Spec.z ));
+        result1.r = min(255, max(0, result1.r));
+        result1.g = min(255, max(0, result1.g));
+        result1.b = min(255, max(0, result1.b));
     }
     else
             result1 = black;

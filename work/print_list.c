@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 12:43:14 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/13 08:58:10 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 19:08:33 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 
 void print_list_sphere(t_objects *ip)

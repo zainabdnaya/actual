@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 21:09:34 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/06 14:32:15 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:48:24 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
 
 int exist_or_not(char *str, char c)

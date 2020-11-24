@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 21:54:17 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/23 13:45:41 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 18:11:20 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../headers/minirt.h"
 
 int main(int argc,char **argv)
 {

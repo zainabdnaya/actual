@@ -6,11 +6,11 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 16:22:19 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/20 13:24:04 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/24 16:48:36 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
 int digits_only(char *s)
 {

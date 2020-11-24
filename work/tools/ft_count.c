@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   ft_count.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/26 19:12:53 by mac               #+#    #+#             */
-/*   Updated: 2020/10/03 20:37:48 by zdnaya           ###   ########.fr       */
+/*   Created: 2020/03/26 19:13:00 by mac               #+#    #+#             */
+/*   Updated: 2020/03/29 06:41:30 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-char                 **ft_free_split(char **split)
+
+int		ft_count(char **str)
 {
 	int		i;
 
 	i = 0;
-	while (split[i])
-	{
-		ft_stringdel(&(split[i]));
+	while (str[i])
 		i++;
-	}
-	free(*split);
-	*split = NULL;
-	return(split);
+	return (i);
 }

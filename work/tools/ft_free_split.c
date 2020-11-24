@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 23:05:34 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/06 19:30:16 by zdnaya           ###   ########.fr       */
+/*   Created: 2020/03/26 19:12:53 by mac               #+#    #+#             */
+/*   Updated: 2020/11/24 16:48:27 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "../../headers/minirt.h"
 
-char	*ft_strdup(char *src)
+char                 **ft_free_split(char **split)
 {
-	char			*dup;
-	int				i;
+	int		i;
 
 	i = 0;
-	while (src[i])
-		i++;
-	dup = (char *)malloc(sizeof(char) * i + 1);
-	if (dup == NULL)
-		return (NULL);
-	i = 0;
-	while (src[i])
+	while (split[i])
 	{
-		dup[i] = src[i];
+		ft_stringdel(&(split[i]));
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	free(*split);
+	*split = NULL;
+	return(split);
 }
