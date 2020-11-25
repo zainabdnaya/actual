@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 09:00:02 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 11:52:26 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 10:09:20 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void obj_error(long nbr)
     if(nbr == 24)
         write(2,"Error(24):\n The Normale Coordinates should be between [-1,1]",60);
     if (nbr == 25)
-        write(2, "Error(25):\nPlan configuration is wrong!\n", 40);  
+        write(2, "Error(25):\nPlan configuration is wrong!\n", 44);  
     if (nbr == 26)
         write(2, "Error(26):\n Triangle configuration is wrong!\n", 47);
     if (nbr == 27)

@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 21:54:17 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 12:49:57 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 13:24:17 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ int main(int argc,char **argv)
      }
     rt.mlx.mlx_ptr = mlx_init();
     parsing_RT(argv[1],&rt);
+    rt.clone.objects = rt.list_obj; 
+    rt.clone.lights = rt.list_light; 
+    rt.clone.camera = rt.list_camera; 
+    // print_light(rt.list_light);
+    // rt.clone.lights = rt.clone.lights->next; 
+    // printf("next|x ==> %f|\t|y ==> %f|\t|z ==> %f|\n",rt.clone.lights->position.x,rt.clone.lights->position.y,rt.clone.lights->position.z);
 
     create_window(&rt, rt.resol.WIDTH, rt.resol.HEIGHT);               
 }

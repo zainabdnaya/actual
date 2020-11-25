@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 22:06:47 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/24 20:43:40 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 13:08:24 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ typedef struct s_list_lights{
     t_color     rgb;
 
     struct s_list_lights *next;
+    struct s_list_lights *previous;
+
 }t_list_lights;
 
 typedef struct s_list_camera{
@@ -118,6 +120,12 @@ typedef struct s_list_camera{
     struct s_list_camera *previous;
 }t_list_camera;
 
+typedef struct s_all
+{
+    t_list_lights   *lights;
+    t_list_camera   *camera;
+    t_objects       *objects;
+}   t_all;
 
 typedef struct s_minirt
 {
@@ -150,6 +158,9 @@ typedef struct s_minirt
     t_list_camera   *list_camera;
     t_list_camera   *new_camera;
     t_list_camera   *new_CamTmp;
+    t_list_lights   *new_lightTmp;
+    t_all           clone;
+
 
 
     char        *line;
@@ -174,7 +185,7 @@ typedef struct s_minirt
     double          var;
     double          shininess;
     double          ks;
-    int             active_cam;
+    int             active;
     int             active_trans;
     int             active_rotation;
     int             now;
@@ -183,6 +194,10 @@ typedef struct s_minirt
     int             size;
     int             index1;
     int             indice;
+    int             sizex;
+    int             sizey;
+    int             trans_rot_index;
+    int             axe;
 }t_minirt;
 
 
@@ -216,6 +231,7 @@ void            config_camera(t_minirt *rt, t_vector look_at);
 void            calcul_direction(t_minirt *rt, t_vector w, t_vector u, t_vector v);
 void            build_image(t_minirt *rt, t_vector look_at);
 void            create_window(t_minirt *rt, int WIDTH, int HEIGHT);
+int	            mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 
 /******************************************************************/
 
@@ -293,6 +309,8 @@ void            add_lights(t_list_lights **head, t_list_lights *new_obj);
 t_list_camera   *add_camera_data(t_vector look_from,t_vector look_at,double fov);
 void            add_camera(t_list_camera **head, t_list_camera *new_obj);
 int		        ft_lstsize(t_list_camera *lst);
+int		        ft_lstsize1(t_list_lights *lst);
+
 /**********************************************************************/
 int             create_bmp(t_minirt *rt);
 /*************************TOOLS***************************************/
@@ -309,7 +327,6 @@ int            ft_samestr(char *s1, char *s2);
 int            resol_check(char *resolution);
 double         my_power(double number, int power);
 int            ft_atoi(char *str);
-static int     words(char *str, char c);
 char           **ft_split(char *s, char c);
 int            ft_isdigit(int c);
 char           *ft_strdup(char *src);
@@ -337,6 +354,14 @@ int             mlx_close(t_minirt *rt);
 int             key_hook(int key, t_minirt *rt);
 void            mlx_hook_configuration(t_minirt *rt);
 int             key_press(int keycode, t_minirt *rt);
+void            key_press2(int keycode,t_minirt *rt);
+void            key_press1(int keycode, t_minirt *rt);
+void            camera_press(t_minirt *rt,int keycode);
+void            camera_rotation(t_minirt *rt,int axe,int keycode);   
+void            light_press(t_minirt *rt,int keycode);
+void            key_press3(int keycode, t_minirt *rt);
+void            key_press4(int keycode, t_minirt *rt);
+
 /***********************************************************************/
 
 /**************************translation&rotation****************************************/
@@ -346,7 +371,7 @@ t_vector    rotation_around_y(t_vector vector_to_rotate,double  tetha);
 t_vector    rotation_around_z(t_vector vector_to_rotate,double  tetha);
 t_vector    radian_in(t_vector rotation);
 t_vector    rotation(t_vector vector_to_rotate,t_vector rotation);
-t_vector        translation(char *str_to_convert,t_vector add_in);
-t_vector  rotation_1(char *str_to_convert,t_vector to_rotate);
-
+t_vector    translation(char *str_to_convert,t_vector add_in);
+t_vector    rotation_1(char *str_to_convert,t_vector to_rotate);
+void        light_translation(t_minirt *rt,int keycode);
 #endif // DEBUG

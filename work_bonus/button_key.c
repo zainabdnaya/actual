@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:33:12 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 10:30:46 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 14:43:19 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,7 @@ int key_hook(int key, t_minirt *rt)
         exit(0);
     return (0);
 }
-void print_list_camera(t_list_camera *ip)
-{
 
-    while (ip != NULL)
-    {
-        printf("Radiuds===>%f\n", ip->fov);
-        printf("Center==> %f\n", ip->look_from.x);
-        printf("Center==> %f\n", ip->look_from.y);
-        printf("Center==> %f\n", ip->look_from.z);
-        printf("Color==> %f\n",  ip->look_at.x);
-        printf("Color==> %f\n",  ip->look_at.y);
-        printf("Color==> %f\n",  ip->look_at.z);
-        ip = ip->next;
-    }
-    printf("\n");
-}
 void     key_press1(int keycode, t_minirt *rt)
 {
     static int i = 1;
@@ -54,9 +39,7 @@ void     key_press1(int keycode, t_minirt *rt)
 
         size = ft_lstsize(rt->new_CamTmp);
      }
-    if(keycode == 8)
-            rt->active_cam = 1;
-    if(keycode == 124 && rt->active_cam == 1)
+    if(keycode == 124 && rt->active == 1)
     {
         if(size == i)
         {
@@ -73,7 +56,7 @@ void     key_press1(int keycode, t_minirt *rt)
 }
 void    key_press2(int keycode,t_minirt *rt)
 {
-     if (keycode == 123 && rt->active_cam == 1 && rt->list_camera->previous!= NULL )
+     if (keycode == 123 && rt->active == 1 && rt->list_camera->previous!= NULL )
     {
              rt->list_camera = rt->list_camera->previous;
         build_image(rt, rt->list_camera->look_at);
@@ -83,8 +66,20 @@ void    key_press2(int keycode,t_minirt *rt)
 
 int key_press(int keycode, t_minirt *rt)
 {
-    key_press1(keycode,rt);
-     key_press2(keycode,rt);
-   
+    static int key = 0;
+    // if(key)
+    if(keycode == 8) // c
+         rt->active = 1;
+    if(keycode == 37) // l
+        rt->active = 2;
+    if(keycode == 31) // o
+        rt->active = 3;
+    if(rt->active == 1)
+        camera_press(rt,keycode);
+    if(rt->active == 2)
+        light_press(rt,keycode);
+    // if(rt->active == 3)
+    //     object_press(rt,keycode);
+
     return(0);
 }
