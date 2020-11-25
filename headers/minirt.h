@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 22:06:47 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 13:08:24 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 15:02:18 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ typedef struct s_minirt
     int             sizey;
     int             trans_rot_index;
     int             axe;
+    int             obj;
 }t_minirt;
 
 
@@ -250,6 +251,7 @@ void            cylindre_parsing(t_minirt *rt);
 t_camera        *camera_one(t_camera *camera,t_minirt *rt);
 t_plan          *paln_one(t_minirt *rt, t_plan *plan);
 t_sphere *sphere_one(t_minirt *rt,t_sphere *sphere);
+void        object_press(t_minirt *rt,int keycode);
 
 /******************************************************************/
 
@@ -374,4 +376,6 @@ t_vector    rotation(t_vector vector_to_rotate,t_vector rotation);
 t_vector    translation(char *str_to_convert,t_vector add_in);
 t_vector    rotation_1(char *str_to_convert,t_vector to_rotate);
 void        light_translation(t_minirt *rt,int keycode);
+void       sphere_translation(t_minirt *rt,int keycode);
+
 #endif // DEBUG

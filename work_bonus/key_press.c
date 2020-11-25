@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:49:22 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 14:43:11 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 15:02:55 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void     key_press3(int keycode, t_minirt *rt)
                  rt->clone.lights = rt->clone.lights->next;
             //    printf("next|x ==> %f|\t|y ==> %f|\t|z ==> %f|\n",rt->clone.lights->position.x,rt->clone.lights->position.y,rt->clone.lights->position.z);
        // }
-                write(1, "puf m here\n",11);
+                // write(1, "puf m here\n",11);
 
         // build_image(rt, rt->list_camera->look_at); 
         // mlx_put_image_to_window(rt->mlx.mlx_ptr, rt->mlx.win, rt->mlx.img_ptr, 0, 0);
@@ -94,10 +94,25 @@ void          light_press(t_minirt *rt,int keycode)
         rt->trans_rot_index = 1;
     if(rt->trans_rot_index == 1  )
     {   
-        write(1, "now im here\n",11);
+        // write(1, "now im here\n",11);
         light_translation(rt,keycode);
         build_image(rt, rt->list_camera->look_at);
         mlx_clear_window (rt->mlx.mlx_ptr, rt->mlx.win );
         mlx_put_image_to_window(rt->mlx.mlx_ptr, rt->mlx.win, rt->mlx.img_ptr, 0, 0);
     }   
+}
+
+void        object_press(t_minirt *rt,int keycode)
+{
+    if(keycode == 17)
+        rt->trans_rot_index = 1;
+    if( keycode == 1 )
+       rt->obj = 1;
+        if(rt->obj == 1 && rt->trans_rot_index == 1)
+        {
+        sphere_translation(rt,keycode);
+        build_image(rt, rt->list_camera->look_at);
+        mlx_clear_window (rt->mlx.mlx_ptr, rt->mlx.win );
+        mlx_put_image_to_window(rt->mlx.mlx_ptr, rt->mlx.win, rt->mlx.img_ptr, 0, 0);
+    }
 }

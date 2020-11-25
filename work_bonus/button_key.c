@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:33:12 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 14:43:19 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 14:49:33 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int key_press(int keycode, t_minirt *rt)
         camera_press(rt,keycode);
     if(rt->active == 2)
         light_press(rt,keycode);
-    // if(rt->active == 3)
-    //     object_press(rt,keycode);
+    if(rt->active == 3)
+        object_press(rt,keycode);
 
     return(0);
 }

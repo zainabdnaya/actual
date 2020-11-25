@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 13:17:13 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 14:32:03 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 14:56:35 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,21 @@ void        light_translation(t_minirt *rt,int keycode)
             rt->clone.lights->position.z = rt->clone.lights->position.z + 5;
         if(keycode == 78)
             rt->clone.lights->position.z = rt->clone.lights->position.z - 5;
+}
+
+
+void       sphere_translation(t_minirt *rt,int keycode)
+{
+        if(keycode == 0)
+            rt->list_obj->center.x = rt->list_obj->center.x - 0.2; 
+        if(keycode == 2)
+            rt->list_obj->center.x = rt->list_obj->center.x + 0.2; 
+        if(keycode == 13)
+            rt->list_obj->center.y = rt->list_obj->center.y + 0.2;
+        if(keycode == 1)
+            rt->list_obj->center.y = rt->list_obj->center.y - 0.2;
+        if(keycode == 69)
+            rt->list_obj->center.z = rt->list_obj->center.z + 0.2;
+        if(keycode == 78)
+            rt->list_obj->center.z = rt->list_obj->center.z - 0.2;
 }
