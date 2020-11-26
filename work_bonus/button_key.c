@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:33:12 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 14:49:33 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/26 19:18:31 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,34 +29,30 @@ int key_hook(int key, t_minirt *rt)
 
 void     key_press1(int keycode, t_minirt *rt)
 {
-    static int i = 1;
-    static int j = 0;
-    static int size=0;
-    if(j==0)
+    if(rt->stc.j==0)
      {
         rt->new_CamTmp=rt->list_camera;
-        j=1;
-
-        size = ft_lstsize(rt->new_CamTmp);
+        rt->stc.j=1;
+        rt->stc.size = ft_lstsize(rt->new_CamTmp);
      }
-    if(keycode == 124 && rt->active == 1)
+    if(keycode == 126 && rt->active == 1)
     {
-        if(size == i)
+        if(rt->stc.size <= rt->stc.i)
         {
             rt->list_camera=rt->new_CamTmp;
-            i=0;
+            rt->stc.i=0;
         }
         else
-             rt->list_camera = rt->list_camera->next;
+            rt->list_camera = rt->list_camera->next;
         build_image(rt, rt->list_camera->look_at); 
         mlx_put_image_to_window(rt->mlx.mlx_ptr, rt->mlx.win, rt->mlx.img_ptr, 0, 0);
-        i++;
+        rt->stc.i++;
     }
     
 }
 void    key_press2(int keycode,t_minirt *rt)
 {
-     if (keycode == 123 && rt->active == 1 && rt->list_camera->previous!= NULL )
+     if (keycode == 125 && rt->active == 1 && rt->list_camera->previous!= NULL )
     {
              rt->list_camera = rt->list_camera->previous;
         build_image(rt, rt->list_camera->look_at);
@@ -66,20 +62,26 @@ void    key_press2(int keycode,t_minirt *rt)
 
 int key_press(int keycode, t_minirt *rt)
 {
-    static int key = 0;
-    // if(key)
-    if(keycode == 8) // c
-         rt->active = 1;
-    if(keycode == 37) // l
+
+    if (keycode == 8) // c
+        rt->active = 1;
+    if (keycode == 37) // l
         rt->active = 2;
-    if(keycode == 31) // o
+    if (keycode == 31) // o
         rt->active = 3;
-    if(rt->active == 1)
-        camera_press(rt,keycode);
-    if(rt->active == 2)
-        light_press(rt,keycode);
-    if(rt->active == 3)
+    if (rt->active == 1)
+        camera_press(rt, keycode);
+    if (rt->active == 2)
+        light_press(rt, keycode);
+    if (rt->active == 3)
         object_press(rt,keycode);
 
-    return(0);
+
+        // sphere_mv(rt, keycode);
+        // cylindre_mv(rt, keycode);
+        // plan_mv(rt,keycode);
+
+    
+
+    return (0);
 }

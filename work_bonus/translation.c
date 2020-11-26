@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 13:17:13 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 14:56:35 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/26 19:38:18 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void        camera_translation(t_minirt *rt,int keycode)
         if(keycode == 2)
             rt->list_camera->look_from.x = rt->list_camera->look_from.x + 0.2; 
         if(keycode == 13)
-                rt->list_camera->look_from.y = rt->list_camera->look_from.y + 0.2;
+            rt->list_camera->look_from.y = rt->list_camera->look_from.y + 0.2;
         if(keycode == 1)
             rt->list_camera->look_from.y = rt->list_camera->look_from.y - 0.2;
         if(keycode == 69)
@@ -62,16 +62,103 @@ void        light_translation(t_minirt *rt,int keycode)
 
 void       sphere_translation(t_minirt *rt,int keycode)
 {
-        if(keycode == 0)
-            rt->list_obj->center.x = rt->list_obj->center.x - 0.2; 
-        if(keycode == 2)
-            rt->list_obj->center.x = rt->list_obj->center.x + 0.2; 
-        if(keycode == 13)
-            rt->list_obj->center.y = rt->list_obj->center.y + 0.2;
-        if(keycode == 1)
-            rt->list_obj->center.y = rt->list_obj->center.y - 0.2;
-        if(keycode == 69)
-            rt->list_obj->center.z = rt->list_obj->center.z + 0.2;
-        if(keycode == 78)
-            rt->list_obj->center.z = rt->list_obj->center.z - 0.2;
+    if (keycode == 0 )
+        rt->clone.objects->center.x = rt->clone.objects->center.x - 5;
+    if (keycode == 2 )
+        rt->clone.objects->center.x = rt->clone.objects->center.x + 5;
+    if (keycode == 13 )
+        rt->clone.objects->center.y = rt->clone.objects->center.y + 5;
+    if (keycode == 1 )
+        rt->clone.objects->center.y = rt->clone.objects->center.y - 5;
+    if (keycode == 69 )
+        rt->clone.objects->center.z = rt->clone.objects->center.z + 5;
+    if (keycode == 78 )
+        rt->clone.objects->center.z = rt->clone.objects->center.z - 5;
+}
+
+
+void       cylindre_trans(t_minirt *rt,int keycode)
+{
+    // write(1,"i m here",10);
+        if(keycode == 0 )
+            rt->clone.objects->cy_center.x = rt->clone.objects->cy_center.x - 5;
+        if (keycode == 2 )
+            rt->clone.objects->cy_center.x = rt->clone.objects->cy_center.x + 5;
+        if (keycode == 13 )
+            rt->clone.objects->cy_center.y = rt->clone.objects->cy_center.y + 5;
+        if (keycode == 1 )
+            rt->clone.objects->cy_center.y = rt->clone.objects->cy_center.y - 5;
+        if (keycode == 69)
+            rt->clone.objects->cy_center.z = rt->clone.objects->cy_center.z + 5;
+        if (keycode == 78)
+            rt->clone.objects->cy_center.z = rt->clone.objects->cy_center.z - 5;
+}
+
+void plan_trans(t_minirt *rt, int keycode)
+{
+    if (keycode == 0)
+        rt->clone.objects->point.x = rt->clone.objects->point.x - 5;
+    if (keycode == 2)
+        rt->clone.objects->point.x = rt->clone.objects->point.x + 5;
+    if (keycode == 13)
+        rt->clone.objects->point.y = rt->clone.objects->point.y + 5;
+    if (keycode == 1)
+        rt->clone.objects->point.y = rt->clone.objects->point.y - 5;
+    if (keycode == 69)
+        rt->clone.objects->point.z = rt->clone.objects->point.z + 5;
+    if (keycode == 78)
+        rt->clone.objects->point.z = rt->clone.objects->point.z - 5;
+}
+
+void    triangle_trans(t_minirt *rt,int keycode)
+{
+    if (keycode == 0)
+        {
+            rt->clone.objects->point_a.x = rt->clone.objects->point_a.x - 5;
+            rt->clone.objects->point_b.x = rt->clone.objects->point_b.x - 5;
+            rt->clone.objects->point_c.x = rt->clone.objects->point_c.x - 5;
+        }
+    if (keycode == 2)
+        {
+            rt->clone.objects->point_a.x = rt->clone.objects->point_a.x + 5;
+            rt->clone.objects->point_b.x = rt->clone.objects->point_b.x + 5;
+            rt->clone.objects->point_c.x = rt->clone.objects->point_c.x + 5;
+        }
+            if (keycode == 13)
+{
+    rt->clone.objects->point_a.y = rt->clone.objects->point_a.y + 5;
+    rt->clone.objects->point_b.y = rt->clone.objects->point_b.y + 5;
+    rt->clone.objects->point_c.y = rt->clone.objects->point_c.y + 5;
+}            if (keycode == 1)
+{
+    rt->clone.objects->point_a.y = rt->clone.objects->point_a.y - 5;
+    rt->clone.objects->point_b.y = rt->clone.objects->point_b.y - 5;
+    rt->clone.objects->point_c.y = rt->clone.objects->point_c.y - 5;
+}            if (keycode == 69)
+{
+    rt->clone.objects->point_a.z = rt->clone.objects->point_a.z + 5;
+    rt->clone.objects->point_b.z = rt->clone.objects->point_b.z + 5;
+    rt->clone.objects->point_c.z = rt->clone.objects->point_c.z + 5;
+}            if (keycode == 78)
+{
+    rt->clone.objects->point_a.z = rt->clone.objects->point_a.z - 5;
+    rt->clone.objects->point_b.z = rt->clone.objects->point_b.z - 5;
+    rt->clone.objects->point_c.z = rt->clone.objects->point_c.z - 5;
+}
+}
+
+void        square_trans(t_minirt *rt, int keycode)
+{
+    if (keycode == 0)
+        rt->clone.objects->sq_center.x = rt->clone.objects->sq_center.x - 5;
+    if (keycode == 2)
+        rt->clone.objects->sq_center.x = rt->clone.objects->sq_center.x + 5;
+    if (keycode == 13)
+        rt->clone.objects->sq_center.y = rt->clone.objects->sq_center.y + 5;
+    if (keycode == 1)
+        rt->clone.objects->sq_center.y = rt->clone.objects->sq_center.y - 5;
+    if (keycode == 69)
+        rt->clone.objects->sq_center.z = rt->clone.objects->sq_center.z + 5;
+    if (keycode == 78)
+        rt->clone.objects->sq_center.z = rt->clone.objects->sq_center.z - 5;
 }

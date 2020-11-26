@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 22:06:47 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 15:02:18 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/26 19:44:27 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_objects
     int         wich_objects;
     
     struct s_objects   *next;
+    struct s_objects   *previous;
 }t_objects;
 
 typedef struct s_list_lights{
@@ -127,6 +128,13 @@ typedef struct s_all
     t_objects       *objects;
 }   t_all;
 
+typedef struct  s_static
+{
+    int i;
+    int j;
+    int size;
+}t_static;
+
 typedef struct s_minirt
 {
     t_mlx       mlx;
@@ -152,6 +160,7 @@ typedef struct s_minirt
     t_color     light_rgb;
     t_vector     shadow_direction;
     t_vector     Spec;
+    t_static       stc;
 
     t_objects       *list_obj;
     t_list_lights   *list_light;
@@ -159,6 +168,7 @@ typedef struct s_minirt
     t_list_camera   *new_camera;
     t_list_camera   *new_CamTmp;
     t_list_lights   *new_lightTmp;
+    t_objects       *new_Tmp;
     t_all           clone;
 
 
@@ -199,6 +209,7 @@ typedef struct s_minirt
     int             trans_rot_index;
     int             axe;
     int             obj;
+    int             switch_on;
 }t_minirt;
 
 
@@ -312,7 +323,7 @@ t_list_camera   *add_camera_data(t_vector look_from,t_vector look_at,double fov)
 void            add_camera(t_list_camera **head, t_list_camera *new_obj);
 int		        ft_lstsize(t_list_camera *lst);
 int		        ft_lstsize1(t_list_lights *lst);
-
+int		ft_lstsize2(t_objects *lst);
 /**********************************************************************/
 int             create_bmp(t_minirt *rt);
 /*************************TOOLS***************************************/
@@ -363,6 +374,13 @@ void            camera_rotation(t_minirt *rt,int axe,int keycode);
 void            light_press(t_minirt *rt,int keycode);
 void            key_press3(int keycode, t_minirt *rt);
 void            key_press4(int keycode, t_minirt *rt);
+void            cam_rot(t_minirt *rt,int keycode);
+void            key_press5(int keycode, t_minirt *rt);
+void            key_press6(int keycode, t_minirt *rt);
+void            wich_one(t_minirt *rt, int keycode);
+void            wich_axe(t_minirt *rt,int keycode);
+void            key_press7(int keycode, t_minirt *rt);
+void            key_press8(int keycode,t_minirt *rt);
 
 /***********************************************************************/
 
@@ -376,6 +394,20 @@ t_vector    rotation(t_vector vector_to_rotate,t_vector rotation);
 t_vector    translation(char *str_to_convert,t_vector add_in);
 t_vector    rotation_1(char *str_to_convert,t_vector to_rotate);
 void        light_translation(t_minirt *rt,int keycode);
-void       sphere_translation(t_minirt *rt,int keycode);
+void        sphere_translation(t_minirt *rt,int keycode);
+void        sphere_mv(t_minirt *rt,int keycode);
+void        cylindre_trans(t_minirt *rt,int keycode);
+void        cylindre_rot(t_minirt *rt,int axe,int keycode);
+void        plan_mv(t_minirt *rt, int keycode);
+void        cylindre_mv(t_minirt *rt, int keycode);
+void        plan_trans(t_minirt *rt, int keycode);
+void        plan_rot(t_minirt *rt, int axe, int keycode);
+void        triangle_trans(t_minirt *rt, int keycode);
+void        square_trans(t_minirt *rt, int keycode);
+void        objects_trans(t_minirt *rt,int keycode);
+void        objects_rot(t_minirt *rt,int keycode);
+void    plan_rot(t_minirt *rt, int axe, int keycode);
+void    square_rot(t_minirt *rt, int axe, int keycode);
 
-#endif // DEBUG
+
+#endif // DEBUGs

@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 18:16:23 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/11/25 12:12:22 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/11/25 16:26:41 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void add_objects(t_objects **head, t_objects *new_obj)
 {
     t_objects *new;
 
+    new_obj->next = NULL;
+    new_obj->previous = NULL;
     if (!head || !new_obj)
         return;
     new = *head;
@@ -23,6 +25,7 @@ void add_objects(t_objects **head, t_objects *new_obj)
     {
         while (new->next)
             new = new->next;
+        new_obj->previous = new;
         new->next = new_obj;
     }
     else

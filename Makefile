@@ -6,7 +6,7 @@
 #    By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/24 20:55:40 by zdnaya            #+#    #+#              #
-#    Updated: 2020/11/25 11:12:08 by zdnaya           ###   ########.fr        #
+#    Updated: 2020/11/25 18:14:34 by zdnaya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,8 @@ SRC_NAME=	main.c\
 	ft_strlen.c\
 	key_press.c\
 	rotation_key.c\
+	objects_mov.c \
+	key.c\
 # SRC_B_NAME=
 HDR_NAME= use.h \
     objects.h \
